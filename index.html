@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>คอร์สทำอาหารญี่ปุ่นออนไลน์ - พร้อมวิดีโอ, คอมเมนต์</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/style.css">
+
+
+</head>
+<body>
+
+<header>
+  <img class="logo" src="https://uploads.onecompiler.io/4429qh5rd/448bxgunv/126793-removebg-preview.png" alt="logo">
+  <nav class="nav" id="nav-links">
+    <a onclick="navigateTo('home')">หน้าแรก</a>
+    <a onclick="navigateTo('courses')">คอร์ส</a>
+    <a onclick="navigateTo('contact')">ติดต่อเรา</a>
+    <a id="nav-logout" onclick="logout()" style="display:none;color:#ff9d9d">ออกจากระบบ</a>
+  </nav>
+
+</header>
+
+<main class="container">
+  <!-- HOME -->
+  <section id="home" class="center-box">
+    <div class="hero">
+  <img class="hero-bg" src="https://uploads.onecompiler.io/4429qh5rd/448dfj6g8/S__5349382.jpg">
+
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <h1>คอร์สทำอาหารญี่ปุ่น</h1>
+    <p>เรียนฟรี ดูได้ทุกที่ ทำตามได้จริง</p>
+
+    <button onclick="navigateTo('courses')">
+      เริ่มเรียนเลย
+    </button>
+  </div>
+</div>
+    <h1>คอร์สทำอาหารญี่ปุ่นออนไลน์</h1>
+    <p>ยินดีต้อนรับ! เรียนวิดีโอทีละบท พร้อมคอมเมนต์ใต้บทเรียน</p>
+    <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap">
+      <button onclick="navigateTo('courses')">ดูคอร์สทั้งหมด</button>
+      <button onclick="navigateTo('contact')" class="small">ติดต่อเรา</button>
+      <button onclick="navigateTo('login')" class="small" style="background:rgba(255,255,255,0.06); color:#fff">เข้าสู่ระบบ</button>
+    </div>
+    <!-- Info Section -->
+<div class="home-section">
+  <h2>เรียนอะไรบ้างในคอร์สนี้</h2>
+   <!-- Slider -->
+<div class="slider" id="slider">
+  <img class="slide active" src="https://uploads.onecompiler.io/4429qh5rd/446c694j8/%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2%E0%B9%81%E0%B8%A3%E0%B8%81.jpg">
+  <img class="slide" src="https://uploads.onecompiler.io/4429qh5rd/448dfj6g8/126820.jpg">
+  <img class="slide" src="https://uploads.onecompiler.io/4429qh5rd/448dfj6g8/S__5349381.jpg">
+  <img class="slide" src="https://uploads.onecompiler.io/4429qh5rd/448dfj6g8/S__5349379.jpg">
+  <img class="slide" src="https://uploads.onecompiler.io/4429qh5rd/448dfj6g8/S__5349380.jpg">
+
+</div>
+  <p>
+    ❀คอร์สนี้เหมาะสำหรับผู้เริ่มต้นและผู้ที่สนใจอาหารญี่ปุ่น❀
+  </p>
+
+  <div class="feature-grid">
+    <div class="feature-card"onclick="navigateTo('about')">
+      <i class="fas fa-utensils"></i>
+      <h4>พื้นฐานอาหารญี่ปุ่น</h4>
+      <p>ซูชิ ซาชิมิ เทมปุระ และอาหารยอดนิยม</p>
+    </div>
+
+    <div class="feature-card"onclick="navigateTo('video')">
+      <i class="fas fa-video"></i>
+      <h4>เรียนจากวิดีโอ</h4>
+      <p>ดูซ้ำได้ เรียนตามจังหวะของคุณ</p>
+    </div>
+
+    <div class="feature-card" onclick="openQuizModal()">
+  <i class="fas fa-comments"></i>
+  <h4>แบบสอบถามหลังเรียน</h4>
+  <p>คุณจะได้ทำความเข้าใจเกี่ยวกับการเรียน</p>
+</div>
+
+  </div>
+  
+
+</div>
+
+  </section>
+<!-- ABOUT / พื้นฐานอาหารญี่ปุ่น -->
+<section id="about" class="center-box" style="display:none">
+
+  <div class="about-wrap">
+
+    <h2 class="about-title">🥢 พื้นฐานอาหารญี่ปุ่น (和食)</h2>
+
+    <p class="about-intro">
+      อาหารญี่ปุ่น (Washoku - 和食) เป็นวัฒนธรรมการกินที่มีเอกลักษณ์โดดเด่น
+      จนได้รับการขึ้นทะเบียนเป็นมรดกภูมิปัญญาทางวัฒนธรรมโดย UNESCO 🍱  
+      หัวใจสำคัญคือการเน้นความสดใหม่ของวัตถุดิบตามฤดูกาล
+      การดึงรสชาติธรรมชาติออกมาให้มากที่สุด
+      และการจัดวางที่สวยงามประณีต
+    </p>
+
+    <!-- หัวข้อที่ 1 -->
+    <div class="about-block">
+      <h3>① ศาสตร์แห่งรสชาติและวัตถุดิบ 🥢</h3>
+      <p>
+        ทำความรู้จักกับรส “อูมามิ” (Umami)  
+        และเครื่องปรุงพื้นฐานที่เป็นหัวใจของอาหารญี่ปุ่น
+        เช่น โชยุ มิโซะ และสาเก  
+        รวมถึงแนวคิดการเลือกใช้วัตถุดิบตามฤดูกาล
+        หรือที่เรียกว่า <strong>Shun (旬)</strong>
+      </p>
+    </div>
+
+    <!-- หัวข้อที่ 2 -->
+    <div class="about-block">
+      <h3>② ประเภทของอาหารยอดนิยม 🍣</h3>
+      <p>
+        สำรวจเมนูญี่ปุ่นที่ได้รับความนิยมทั่วโลก
+        เช่น ซูชิ (Sushi), ราเมง (Ramen), เทมปุระ (Tempura)
+        รวมถึงแนวคิดอาหารชุดแบบ
+        <strong>อิจิจู ซันไซ</strong>
+        (ข้าว 1 ซุป 1 กับข้าว 3)
+      </p>
+    </div>
+
+    <!-- หัวข้อที่ 3 -->
+    <div class="about-block">
+      <h3>③ มารยาทและวัฒนธรรมบนโต๊ะอาหาร 🍵</h3>
+      <p>
+        เรียนรู้วัฒนธรรมที่น่าสนใจ
+        เช่น การใช้ตะเกียบที่ถูกต้อง
+        การซดน้ำซุปเสียงดัง
+        และความหมายของคำว่า
+        <strong>“อิตาดากิมัส” (Itadakimasu)</strong>
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- VIDEO -->
+<section id="video" class="center-box" style="display:none">
+  <h2 class="section-title">เรียนจากวิดีโอ</h2>
+  <p class="section-desc">
+    ดูซ้ำได้ เรียนตามจังหวะของคุณ
+  </p>
+<!-- เรียนจากวิดีโอ -->
+<div class="learn-video-box">
+
+  <!-- ซ้าย: วิดีโอ -->
+  <div class="video-area">
+    <iframe
+      src="https://www.youtube.com/embed/i_ZlOMewCRU?si=HPrvxHaJ6Vo1FXN7"
+      frameborder="0"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <!-- กลาง: TEXT แนวตั้ง -->
+  <div class="vertical-text">
+    <span>お</span>
+    <span>す</span>
+    <span>す</span>
+    <span>め</span>
+    <span>の</span>
+    <span>和</span>
+    <span>食</span>
+  </div>
+
+  <!-- ขวา: รูปเลื่อน -->
+  <div class="image-slider">
+    <div class="slider-track">
+      <img src="../images/S__7823371_0.jpg">
+      <img src="../images/S__7823373_0.jpg">
+      <img src="../images/ซูชิ.jpg">
+      <img src="../images/กุ้งเทม.jpg">
+      <img src="../images/ซาบะอิ๊ว.jpg">
+      <img src="../images/สเต็กเนื้อ.jpg">
+      <img src="../images/ไคเซนด้ง.jpg">
+      <img src="../images/หิมะอิ๊ว.jpg">
+      <img src="../images/ไทยากิ.jpg">
+      <img src="../images/ไดฟูกุ.jpg">
+    </div>
+  </div>
+
+</div>
+
+</section>
+<!-- Quiz Modal -->
+<div id="quizModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeQuizModal()">&times;</span>
+
+    <h2>📝 แบบทดสอบหลังเรียน</h2>
+    <p class="modal-desc">
+      แบบทดสอบนี้ช่วยประเมินความเข้าใจหลังเรียนคอร์สอาหารญี่ปุ่น  
+      ใช้เวลาประมาณ 5–10 นาที
+    </p>
+
+    <ul class="quiz-list">
+      <li>✔️ คำถามพื้นฐานอาหารญี่ปุ่น</li>
+      <li>✔️ เทคนิคการทำอาหาร</li>
+      <li>✔️ ไม่มีคะแนนสอบตก</li>
+    </ul>
+
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSf17CqcMcIyCaGrnFWKKFkB94qOe59yZIfWtQEcrWfFJDOSnA/viewform?usp=header"
+       target="_blank"
+       class="quiz-btn">
+       👉 กดเพื่อทำแบบทดสอบ
+    </a>
+  </div>
+</div>
+
+  <!-- LOGIN -->
+  <section id="login" class="center-box" style="display:none">
+    <h2>เข้าสู่ระบบ</h2>
+    <p>กรอกอีเมลของคุณเพื่อเข้าสู่ระบบ</p>
+    <input id="email-input" type="email" placeholder="อีเมลของคุณ" />
+    <input type="password" id="password" placeholder="รหัสผ่าน" required>
+    <button onclick="login()">เข้าสู่ระบบด้วยอีเมล</button>
+    <div id="errorMsg" class="error"></div>
+
+  </section>
+
+  <!-- COURSES -->
+  <section id="courses" class="center-box" style="display:none">
+    <div style="display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap">
+      <div>
+        <h2>คอร์สเรียนทำอาหารญี่ปุ่น</h2>
+        <p class="meta">เลือกบทเรียนเพื่อดูวิดีโอและคอมเมนต์</p>
+      </div>
+      <div class="center-text">
+        <span style="color:#fff8e1;font-weight:600">ผู้เข้าสู่ระบบ: </span><span id="user-email-display" style="color:#ffd27f;font-weight:700">-</span>
+      </div>
+    </div>
+
+    <div class="course-grid" id="course-list">
+</div>
+
+    </div>
+
+    <!-- Lesson area (เมื่อคลิก) -->
+<div id="lesson-container" class="lesson-area" style="display:none">
+    
+  <!-- LEFT: PLAYER -->
+  <div class="player card" style="flex:1 1 600px">
+    <h3 id="lesson-title">บทเรียน</h3>
+
+    <!-- YouTube -->
+    <iframe id="lesson-iframe"
+            style="display:none; width:100%; height:360px;"
+            frameborder="0"
+            allowfullscreen></iframe>
+
+    <!-- MP4 -->
+    <video id="lesson-video" controls style="width:100%;">
+      <source id="lesson-src" src="">
+    </video>
+
+    <div style="margin-top:8px;font-size:13px;color:#f0e6c9">
+      หมวด: <strong id="lesson-category"></strong>
+    </div>
+
+    <div style="font-size:13px;color:#f0e6c9">
+      เวลาเล่นล่าสุด: <span id="last-played">-</span>
+    </div>
+    <div style="font-size:13px;color:#f0e6c9">
+  👁️ ผู้เข้าชม: <span id="lesson-views">0 ครั้ง</span>
+</div>
+
+<!-- DETAIL -->
+<div class="lesson-detail">
+  <div class="detail-toggle" onclick="toggleDetail()">
+    รายละเอียด <span id="detailIcon">▼</span>
+  </div>
+
+  <div id="lesson-detail-content" class="detail-content">
+    <!-- JS จะใส่รายละเอียดตรงนี้ -->
+  </div>
+</div>
+
+    <!-- Comments -->
+    <div style="margin-top:12px">
+      <h4 style="color:#ffd27f">คอมเมนต์ / คำถาม</h4>
+      <textarea id="comment-input"></textarea>
+      <button onclick="postComment()">ส่ง</button>
+      <div id="comments-list"></div>
+    </div>
+  </div>
+
+  
+
+</div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+<section id="contact" class="contact-box" style="display:none">
+  <h2>ติดต่อ</h2>
+  <p class="contact-desc">สามารถติดต่อได้โดยตรงทางอีเมล</p>
+
+  <a
+    href="https://mail.google.com/mail/?view=cm&fs=1&to=khxrsreiynxaharyipun@gmail.com&su=ติดต่อจากเว็บไซต์คอร์สอาหารญี่ปุ่น"
+    target="_blank"
+    class="gmail-btn"
+  >
+    ✉️ ส่งอีเมลผ่าน Gmail
+  </a>
+</section>
+
+</main>
+
+<div id="toast">ข้อความ</div>
+<div class="footer-stub"></div>
+
+<script src="../js/script.js"></script>
+
+<script>
+function openQuizModal(){
+  console.log('OPEN MODAL OK');
+  document.getElementById('quizModal').style.display = 'flex';
+}
+
+function closeQuizModal(){
+  document.getElementById('quizModal').style.display = 'none';
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+

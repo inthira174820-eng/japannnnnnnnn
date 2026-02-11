@@ -1,0 +1,677 @@
+
+/* -------- Reset & Base -------- */
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Poppins',sans-serif}
+
+
+/* Header */
+header{
+  position:fixed; top:0; left:0; right:0; height:72px;
+  background:rgba(0,0,0,0.6); display:flex; align-items:center; justify-content:space-between;
+  padding:12px 18px; backdrop-filter: blur(8px); z-index:50;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.logo { height:48px; filter: drop-shadow(0 6px 10px rgba(0,0,0,0.5)); }
+.nav { display:flex; gap:14px; align-items:center; }
+.nav a{ color:#ffe9a3; text-decoration:none; font-weight:600; cursor:pointer; padding:8px 10px; border-radius:8px; }
+.nav a:hover{ color:#fff; background:rgba(255,255,255,0.03) }
+
+/* Layout */
+.container{ max-width:1100px; margin:100px auto 40px; padding:18px; }
+.center-box{ background: rgba(0,0,0,0.55); border-radius:14px; padding:22px; border:1px solid rgba(255,255,255,0.08); }
+
+/* Typography */
+h1,h2,h3{ color:#ffd27f; margin-bottom:10px; }
+p{ color:#fff8e1; line-height:1.6; }
+
+/* Buttons & Inputs */
+input, textarea, select {
+  width:100%; padding:12px 14px; margin:8px 0 12px; border-radius:10px;
+  border:1px solid rgba(255,255,255,0.15); background:rgba(255,255,255,0.06); color:#fff;
+}
+button{
+  padding:12px 16px; border-radius:10px; border:none; cursor:pointer; font-weight:700;
+  background: linear-gradient(135deg,#b88e5e,#ffd27f); color:#3b2200;
+}
+.small { padding:8px 12px; font-size:14px; border-radius:8px; }
+
+/* Toast */
+#toast{ position:fixed; left:50%; transform:translateX(-50%); bottom:86px; background:#222; color:#fff; padding:10px 18px; border-radius:8px; display:none; z-index:200; }
+
+/* Course list */
+.course-grid{ display:grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap:14px; margin-top:12px; }
+.course-card{ background: rgba(255,255,255,0.04); border-radius:12px; padding:12px; display:flex; gap:12px; align-items:center; cursor:pointer; transition:all .18s; }
+.course-card:hover{ transform:translateY(-6px); box-shadow: 0 10px 30px rgba(0,0,0,0.45); }
+.course-thumb{ width:88px; height:64px; border-radius:8px; object-fit:cover; flex-shrink:0; }
+.course-info h4{ margin-bottom:6px; color:#fff; }
+.meta{ font-size:13px; color:#f0e6c9; }
+
+/* Video & lesson area */
+.lesson-area{ display:flex; gap:18px; margin-top:14px; flex-wrap:wrap; }
+.player { flex:1 1 560px; min-width:280px; background:rgba(0,0,0,0.45); padding:12px; border-radius:12px; }
+.player video{ width:100%; border-radius:8px; background:#000; display:block; }
+.lesson-meta{ margin-top:10px; display:flex; gap:10px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
+.progress-bar { height:10px; width:100%; background:rgba(255,255,255,0.12); border-radius:10px; overflow:hidden; margin-top:8px; }
+.progress-fill{ height:100%; width:0%; background: linear-gradient(90deg,#ffd27f,#b88e5e); }
+
+/* Comment area */
+.comments { margin-top:12px; background:rgba(255,255,255,0.03); padding:10px; border-radius:10px; max-height:320px; overflow:auto; }
+.comment { padding:10px; border-radius:10px; margin-bottom:10px; background: rgba(255,255,255,0.02); }
+.comment .who{ font-weight:700; color:#ffd27f; margin-bottom:6px; }
+.comment .text{ color:#fff8e1; font-size:15px; }
+.comment .time{ font-size:12px; color:#ccc; margin-top:6px; }
+
+.footer-stub{ height:72px; }
+
+/* small helper */
+.center-text{ text-align:center; }
+.link-like{ color:#ffe9a3; cursor:pointer; text-decoration:underline; }
+/* =========================
+   Mobile UI (<=768px)
+   ========================= */
+@media (max-width: 768px){
+
+  header{
+    height:60px;
+    padding:0 14px;
+  }
+
+  header h1{
+    font-size:16px;
+  }
+
+  nav a{
+    font-size:14px;
+    margin-left:10px;
+  }
+
+  main{
+    margin:80px 8px;
+    padding:0;
+  }
+
+  .card{
+    padding:14px;
+    border-radius:12px;
+  }
+
+  /* course list */
+  .course-grid{
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+
+  .course{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .course img{
+    width:100%;
+    height:140px;
+  }
+
+  /* lesson */
+  .lesson{
+    margin-top:14px;
+  }
+
+  .video-box{
+    width:100%;
+  }
+
+  video{
+    border-radius:12px;
+  }
+
+  /* buttons */
+  button{
+    width:100%;
+    padding:14px;
+    font-size:16px;
+  }
+
+  button + button{
+    margin-top:8px;
+  }
+
+  /* inputs */
+  textarea,input{
+    font-size:16px; /* ป้องกัน iOS zoom */
+  }
+
+  /* comments */
+  .comment{
+    font-size:14px;
+  }
+
+  /* status text */
+  #status{
+    font-size:13px;
+  }
+}
+/* =========================
+   Home Slider
+   ========================= */
+.slider{
+  height:240px;          /* ⬅️ ลดจาก 360 */
+  max-width:900px;       /* ⬅️ ไม่ให้กว้างเกิน */
+  margin:24px auto 36px; /* จัดกลาง */
+}
+
+/* mobile */
+@media (max-width:768px){
+  .slider{
+    height:180px;
+  }
+}
+/* =========================
+   Fade Slider
+   ========================= */
+.slider{
+  margin-top:24px;
+  position:relative;
+  height:360px;   /* 🔼 จาก 260px เป็น 360px */
+  border-radius:18px;
+  overflow:hidden;
+}
+
+.slide{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0;
+  transition:opacity 1.2s ease-in-out;
+}
+
+.slide.active{
+  opacity:1;
+}
+
+/* mobile */
+@media (max-width:768px){
+  .slider{
+    height:360px;   /* เดิม 180px → สูงขึ้น */
+  }
+}
+
+/* =========================
+   Logo size override
+   ========================= */
+.logo{
+  height:100px;
+}
+
+/* ปรับสำหรับมือถือ */
+@media (max-width:768px){
+  .logo{
+    height:80px;
+  }
+}
+/* =========================
+   Home Vertical Sections
+   ========================= */
+.home-section{
+  margin-top:40px;
+  text-align:center;
+}
+
+.home-section h2{
+  color:#ffd27f;
+  margin-bottom:12px;
+}
+
+.home-section p{
+  max-width:720px;
+  margin:0 auto 28px;
+  color:#fff8e1;
+}
+
+.feature-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
+  margin-top:20px;
+}
+
+.feature-card{
+  background:rgba(255,255,255,0.04);
+  border-radius:14px;
+  padding:20px;
+  border:1px solid rgba(255,255,255,0.06);
+}
+
+.feature-card i{
+  font-size:32px;
+  color:#ffd27f;
+  margin-bottom:12px;
+}
+
+.feature-card h4{
+  margin-bottom:6px;
+  color:#fff;
+}
+
+.feature-card p{
+  font-size:14px;
+  color:#f0e6c9;
+}
+
+/* mobile */
+@media (max-width:768px){
+  .home-section{
+    margin-top:28px;
+  }
+}
+/* =========================
+   Hero Netflix Style
+   ========================= */
+.hero{
+  position:relative;
+  height:50vh;            /* สูงเกือบเต็มจอ */
+  min-height:360px;
+  border-radius:18px;
+  overflow:hidden;
+  margin-top:18px;
+}
+
+.hero-bg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.hero-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.35),
+    rgba(0,0,0,0.7)
+  );
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;      /* ⭐ จัดกลางแนวนอน */
+  text-align:center;       /* ⭐ ตัวหนังสือกลาง */
+  padding:40px;
+  max-width:520px;
+  margin:0 auto;           /* ⭐ กล่องอยู่กลาง */
+}
+
+.hero-content h1{
+  font-size:42px;
+  color:#ffd27f;
+  margin-bottom:12px;
+}
+
+.hero-content p{
+  font-size:18px;
+  color:#fff8e1;
+  margin-bottom:22px;
+}
+
+.hero-content button{
+  width:fit-content;
+  padding:14px 26px;
+  font-size:16px;
+}
+
+/* mobile */
+@media (max-width:768px){
+  .hero{
+    height:70vh;
+    min-height:360px;
+  }
+
+  .hero-content{
+    padding:24px;
+  }
+
+  .hero-content h1{
+    font-size:28px;
+  }
+
+  .hero-content p{
+    font-size:15px;
+  }
+}
+.home-section .slider{
+  margin:28px auto 40px;
+  max-width:900px;
+}
+/* =========================
+   Login placeholder color
+   ========================= */
+#login input::placeholder{
+  color:#ffd27f;          /* สีทอง */
+  opacity:1;              /* สำคัญสำหรับบาง browser */
+}
+
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  color:#fff;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.45)),
+    url('https://uploads.onecompiler.io/4429qh5rd/448dfj6g8/126823%20%E0%B8%9E%E0%B8%B7%E0%B9%89%E0%B8%99%E0%B8%AB%E0%B8%A5%E0%B8%B1%E0%B8%87.jpg')
+    center / cover no-repeat fixed;
+}
+
+.lesson-toggle {
+  cursor: pointer;
+  display: inline-flex;   /* ติดคำ */
+  align-items: center;
+  gap: 6px;               /* ระยะห่างคำกับลูกศร */
+  color: #ffd27f;
+}
+
+.arrow {
+  transition: transform 0.3s ease;
+  font-size: 14px;
+}
+
+/* ลูกศรหมุน */
+.arrow.rotate {
+  transform: rotate(180deg);
+}
+
+.lesson-detail{
+  margin-top:14px;
+  background:rgba(0,0,0,0.35);
+  border-radius:12px;
+  padding:12px;
+}
+
+.detail-toggle{
+  cursor:pointer;
+  color:#ffd27f;
+  font-weight:600;
+}
+
+.detail-content{
+  display:none;
+  margin-top:8px;
+  color:#eee;
+  line-height:1.6;
+}
+.section-title { 
+  color: #ffd27f; 
+  text-align: center; 
+  margin-bottom: 8px; 
+}
+.section-desc { 
+  text-align: center; 
+  color: #f0e6c9; 
+  margin-bottom: 24px; 
+} 
+.content-grid { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); 
+  gap: 16px; 
+} 
+.content-card { 
+  background: rgba(0,0,0,0.55); 
+  border-radius: 16px; 
+  padding: 14px; 
+}
+.content-card img {
+  width: 100%; 
+  border-radius: 12px; 
+  margin-bottom: 10px; 
+} 
+.video-layout { 
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  gap: 16px; 
+} 
+.video-info ul { 
+  padding-left: 18px; 
+  color: #f0e6c9; 
+}
+.qa-box { 
+  display: grid; 
+  gap: 12px; 
+} 
+.qa-item { 
+  background: rgba(0,0,0,0.55); 
+  padding: 14px; 
+  border-radius: 12px; 
+}
+/* ===============================
+   HOME : เรียนจากวิดีโอ
+   =============================== */
+
+.learn-video-box {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  margin-top: 30px;
+  background: rgba(0,0,0,0.55);
+  border-radius: 16px;
+}
+
+/* VIDEO */
+.video-area {
+  flex: 3;
+}
+.video-area iframe {
+  width: 100%;
+  height: 350px;
+  border-radius: 12px;
+}
+
+/* TEXT แนวตั้ง */
+.vertical-text {
+  width: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #ffd27f;
+}
+
+/* IMG SLIDER */
+.image-slider {
+  flex: 1;
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+.slider-track {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.slider-track img {
+  width: 100%;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.slider-track img:hover {
+  transform: scale(1.05);
+}
+
+/* ===== Modal ===== */
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.75);
+  z-index:999;
+  justify-content:center;
+  align-items:center;
+}
+
+.modal-content{
+  background:#1f1f1f;
+  color:#fff;
+  padding:28px;
+  border-radius:16px;
+  width:90%;
+  max-width:420px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.6);
+  animation:fadeUp 0.35s ease;
+}
+
+.modal-content h2{
+  color:#ffd27f;
+  margin-bottom:10px;
+}
+
+.modal-desc{
+  font-size:14px;
+  color:#e6e6e6;
+}
+
+.quiz-list{
+  margin:14px 0;
+  padding-left:18px;
+  font-size:14px;
+}
+
+.quiz-btn{
+  display:block;
+  text-align:center;
+  background:linear-gradient(135deg,#ffd27f,#ff9d00);
+  color:#000;
+  padding:12px;
+  border-radius:10px;
+  font-weight:700;
+  text-decoration:none;
+  margin-top:12px;
+  transition:0.3s;
+}
+
+.quiz-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(255,210,127,0.4);
+}
+
+.close{
+  position:absolute;
+  right:18px;
+  top:14px;
+  font-size:24px;
+  cursor:pointer;
+  color:#fff;
+}
+
+@keyframes fadeUp{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* =========================
+   About : พื้นฐานอาหารญี่ปุ่น
+   ========================= */
+.about-wrap{
+  max-width:900px;
+  margin:auto;
+  line-height:1.9;
+}
+
+.about-title{
+  font-size:30px;
+  color:#ffd27f;
+  margin-bottom:16px;
+  text-align:center;
+}
+
+.about-intro{
+  font-size:16px;
+  color:#f0e6c9;
+  background:rgba(255,255,255,0.04);
+  padding:18px 22px;
+  border-radius:14px;
+  margin-bottom:24px;
+}
+
+.about-block{
+  margin-bottom:22px;
+  padding:18px 22px;
+  border-left:4px solid #ffd27f;
+  background:rgba(0,0,0,0.25);
+  border-radius:10px;
+}
+
+.about-block h3{
+  margin-bottom:8px;
+  color:#ffe4a8;
+}
+
+.about-block p{
+  color:#f5f0e3;
+  font-size:15px;
+}
+
+.about-placeholder{
+  margin-top:30px;
+  padding:16px;
+  border:2px dashed rgba(255,255,255,0.3);
+  border-radius:12px;
+  color:#ddd;
+  text-align:center;
+  font-size:14px;
+}
+
+.contact-box {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.contact-desc {
+  color: #f0e6c9;
+  margin-bottom: 24px;
+}
+
+.gmail-btn {
+  display: inline-block;
+  padding: 14px 28px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #2b1b0f;
+  background: linear-gradient(135deg, #ffd27f, #ffb703);
+  border-radius: 40px;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+
+.gmail-btn:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+}
+
+/* ===== Lesson Fullscreen Mode ===== */
+.lesson-area{
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(0,0,0,0.9);
+  padding: 90px 20px 20px;
+  overflow-y: auto;
+  display: none;
+}
+
+.lesson-area.show{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
